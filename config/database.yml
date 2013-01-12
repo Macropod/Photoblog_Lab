@@ -12,8 +12,9 @@
 development:
   adapter: postgresql
   host: localhost
-  username: user
-  database: app-dev
+  username: postgres
+  password: ebeJcP94u7coBv16PXao
+  database: PBL_dev
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -26,8 +27,9 @@ test:
 
   adapter: postgresql
   host: localhost
-  username: user
-  database: app-dev
+  username: postgres
+  password: ebeJcP94u7coBv16PXao
+  database: PBL_test
 
 production:
   adapter: sqlite3
