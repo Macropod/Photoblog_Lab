@@ -72,6 +72,15 @@ describe User do
 	it { should_not be_valid }  	
   end
 
+  describe "when email has uppercase letters" do
+    before do
+      @user.email = "A@B.com"
+      @user.save
+    end
+    let(:found_user) { User.find_by_email(@user.email) }
+    it { found_user.email.should == "a@b.com" }
+  end
+
   describe "when password is blank" do
     before { @user.password = @user.password_confirmation = " " }
     it { should_not be_valid }
