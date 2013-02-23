@@ -15,5 +15,11 @@ namespace :db do
                    password: password,
                    password_confirmation: password)
     end
+    
+    users = User.all(limit: 6)
+    50.times do
+      content = ('a'..'z').to_a.shuffle[0,15].join
+      users.each { |user| user.posts.create!(text: content) }
+    end
   end
 end

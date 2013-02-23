@@ -13,9 +13,57 @@ describe "Static pages" do
     before { visit root_path }
     let(:heading)    { 'PhotoBlog' }
     let(:page_title) { '' }
+    let(:admin) { FactoryGirl.create(:admin) }
 
     it_should_behave_like "all static pages"
     it { should_not have_selector 'title', text: '| Home' }
+
+    describe "with posts" do
+      let(:user1) { FactoryGirl.create(:user) }
+      let(:user2) { FactoryGirl.create(:user) }
+      let!(:p1) {FactoryGirl.create(:post, user: user1, text: "post1") }  
+      let!(:p2) {FactoryGirl.create(:post, user: user2, text: "post2") }
+
+      describe "without being signed in" do
+        it { should_not have_content(p1.text) }
+      end
+
+      describe "without being an admin" do
+        before do
+          sign_in(user1)
+          visit root_path
+        end
+        it { should_not have_link "Create a new post" }
+      end
+
+      describe "when signed in" do
+        before do
+          sign_in(user1)
+          visit root_path
+        end
+        it { should have_content(p1.text) }
+        it { should have_content(user1.name) }
+        it { should have_content(p2.text) }
+        it { should have_content(user2.name) }
+        #it { should have_content(user.posts.count) }
+      end
+
+      describe "when signed in as admin" do
+        before do
+          sign_in(admin)
+          visit root_path
+        end
+        it { should have_link "Delete" }
+      end
+    end
+
+    describe "when signed in as admin" do
+      before do
+        sign_in(admin)
+        visit root_path
+      end
+      it { should have_link "Create a new post" }
+    end
   end
 
     describe "Help page" do

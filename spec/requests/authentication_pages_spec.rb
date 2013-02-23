@@ -4,6 +4,24 @@ describe "Authentication" do
 
   subject { page }
 
+  describe "home page" do
+    before { visit root_path }
+
+    describe "without being signed in" do
+      it { should have_link("Sign up now", href: signup_path) }
+    end
+
+    describe "while being signed in" do
+      let(:user) { FactoryGirl.create(:user) }
+      before do
+       sign_in(user)
+       visit root_path
+      end
+
+      it { should_not have_link("Sign up now", href: signup_path) }
+    end
+  end
+
   describe "signin page" do
     before { visit signin_path }
 
@@ -116,6 +134,19 @@ describe "Authentication" do
           end
 
         end
+
+      describe "in the Posts controller" do
+
+        describe "submitting to the create action" do
+          before { post posts_path }
+          specify { response.should redirect_to(signin_path) }
+        end
+
+        describe "submitting to the destroy action" do
+          before { delete post_path(FactoryGirl.create(:post)) }
+          specify { response.should redirect_to(signin_path) }
+        end
+      end
       end
     end
 
@@ -149,17 +180,38 @@ describe "Authentication" do
           specify { response.should redirect_to(root_path) }
         end
       end
+
+      describe "in the Posts controller" do
+
+        # if some day every user can create posts, you may want to restrict the possibility of deleting posts to the user who created it or an admin
+      end
     end
 
     describe "as non admin" do
       let(:user) { FactoryGirl.create(:user) }
       let(:not_admin) { FactoryGirl.create(:user) }
+      let(:post_object) { FactoryGirl.create(:post) }
 
       before { sign_in not_admin }
 
       describe "submitting a DELETE request to the Users#destroy action" do
         before { delete user_path(user) }
         specify { response.should redirect_to(root_path) }        
+      end
+
+      describe "accessing the new post page" do
+        before { get newpost_path }
+        specify { response.should redirect_to(root_path) }
+      end
+
+      describe "submitting a POST request to the Posts#create action" do
+        before { post posts_path }
+        specify { response.should redirect_to(root_path) }
+      end 
+
+      describe "submitting a DELETE request to the Posts#destroy action" do
+        before { delete post_path(post_object) }
+        specify { response.should redirect_to(root_path) }
       end
     end
 
