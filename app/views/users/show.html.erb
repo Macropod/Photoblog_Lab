@@ -1,9 +1,11 @@
 <div class="row">
-  <aside class="span4">
+  <div class="span12">
     <section>
       <h1>
+        <%= image_tag @user.avatar.url(:medium), class: "avatar" %>
         <%= @user.name %>
       </h1>
     </section>
-  </aside>
+  
+  </div>
 </div>

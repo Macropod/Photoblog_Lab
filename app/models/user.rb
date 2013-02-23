@@ -10,9 +10,10 @@
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :email, :name, :password, :password_confirmation
+  attr_accessible :email, :name, :password, :password_confirmation, :avatar
   has_secure_password
   has_many :posts, dependent: :destroy
+  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
 
   before_save { self.email.downcase! }
   before_save :create_remember_token

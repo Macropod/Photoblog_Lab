@@ -34,4 +34,20 @@ PhotoblogLab::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  # imagemagick path for paperclip
+  Paperclip.options[:command_path] = 'C:\Software\ImageMagick-6.8.3-Q16'
+  Paperclip.options[:swallow_stderr] = false
+  ENV['PATH'] = Paperclip.options[:command_path] + ";" + ENV['PATH']
+  
+  # S3 connection
+  config.paperclip_defaults = {
+  :storage => :s3,
+  :s3_credentials => {
+    :bucket => ENV['AWS_BUCKET'],
+    :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+    :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+  },
+  :s3_permissions => :private
+  }
 end
