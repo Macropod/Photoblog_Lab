@@ -2,21 +2,34 @@
 #
 # Table name: users
 #
-#  id         :integer          not null, primary key
-#  name       :string(255)
-#  email      :string(255)
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id                  :integer          not null, primary key
+#  name                :string(255)
+#  email               :string(255)
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#  password_digest     :string(255)
+#  remember_token      :string(255)
+#  admin               :boolean          default(FALSE)
+#  avatar_file_name    :string(255)
+#  avatar_content_type :string(255)
+#  avatar_file_size    :integer
+#  avatar_updated_at   :datetime
+#  access_token        :string(255)
 #
 
 class User < ActiveRecord::Base
   attr_accessible :email, :name, :password, :password_confirmation, :avatar
   has_secure_password
   has_many :posts, dependent: :destroy
-  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
+  has_attached_file :avatar,
+                    :styles => { :medium => "300x300>", :thumb => "100x100>" },
+                    :path => "/:attachment/:access_token/:style.:extension",
+                    #:default_url => "/:attachment/missing/:style/missing.jpg"
+                    :default_url => "/missing/:style/missing.jpg"
 
   before_save { self.email.downcase! }
   before_save :create_remember_token
+  before_create :generate_access_token
 
   validates(:name, presence: true, length: { maximum: 40 })
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -30,5 +43,23 @@ class User < ActiveRecord::Base
 
     def create_remember_token
       self.remember_token = SecureRandom.urlsafe_base64
+    end
+
+    # simple random salt
+    def random_salt(len = 20)
+      chars = ("a".."z").to_a + ("A".."Z").to_a + ("0".."9").to_a
+      salt = ""
+      1.upto(len) { |i| salt << chars[rand(chars.size-1)] }
+      return salt
+    end
+
+    # SHA1 from random salt and time
+    def generate_access_token
+      self.access_token = Digest::SHA1.hexdigest("#{random_salt}#{Time.now.to_i}")
+    end
+
+    # interpolate in paperclip
+    Paperclip.interpolates :access_token  do |attachment, style|
+      attachment.instance.access_token
     end
 end
