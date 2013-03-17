@@ -47,6 +47,7 @@ describe "User Pages" do
         it { should_not have_link('delete', href: user_path(admin)) }
       end
     end
+
   end
 
   describe "signup page" do 

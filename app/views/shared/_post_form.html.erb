@@ -3,5 +3,9 @@
   <div class="field">
     <%= f.text_area :text, placeholder: "Compose new post..." %>
   </div>
+  <div class="picture_path">
+    <%= f.label :picture %>
+	<%= f.file_field :picture %>
+  </div>
   <%= f.submit "Post", class: "btn btn-large btn-primary" %>
 <% end %>

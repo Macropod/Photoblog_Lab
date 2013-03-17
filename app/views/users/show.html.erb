@@ -2,7 +2,7 @@
   <div class="span12">
     <section>
       <h1>
-        <%= image_tag( url_esc(100, :medium, @user) , class: "avatar") %>
+        <%= image_tag( url_esc_user(100, :medium, @user) , class: "avatar", alt: @user.name) %>
         <%= @user.name %>
       </h1>
     </section>
