@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       sign_in user
       redirect_back_or(user)
   	else
-      flash.now[:error] = "Invalid name/password combination #{user.name}"
+      flash.now[:error] = "Invalid name/password combination"
       @title = "Sign In"
       render 'new'
   	end
