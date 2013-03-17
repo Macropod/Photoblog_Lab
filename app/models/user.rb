@@ -18,24 +18,15 @@
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :email, :name, :password, :password_confirmation, :avatar
+  attr_accessible :name, :password, :password_confirmation
   has_secure_password
   has_many :posts, dependent: :destroy
-  has_attached_file :avatar,
-                    :styles => { :medium => "300x300>", :thumb => "100x100>" },
-                    :path => "/:attachment/:access_token/:style.:extension",
-                    #:default_url => "/:attachment/missing/:style/missing.jpg"
-                    :default_url => "/missing/:style/missing.jpg"
 
-  before_save { self.email.downcase! }
+  #before_save { self.name.downcase! }
   before_save :create_remember_token
   before_create :generate_access_token
 
-  validates(:name, presence: true, length: { maximum: 40 })
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates(:email, presence: true, 
-  					format: { with: VALID_EMAIL_REGEX },
-  					uniqueness: { case_sensitive: false })
+  validates(:name, presence: true, length: { maximum: 40 }, uniqueness: { case_sensitive: true })
   validates(:password, length: { minimum: 6 })
   validates(:password_confirmation, presence: true)
   

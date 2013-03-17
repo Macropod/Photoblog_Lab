@@ -1,19 +1,18 @@
 
-<div class="center hero-unit">
-
-  <% if signed_in? %>
-  	<h1>Whats new?</h1>
-    <% if admin? %>
-      <%= link_to "Create a new post!", newpost_path, class: "btn btn-large btn-primary" %>
+<div class="center hero-unit bckgrnd-img">
+  <div class="container">
+    <% if signed_in? %>
+    	<h1>Whats new?</h1>
+      <% if admin? %>
+        <%= link_to "Create a new post!", newpost_path, class: "btn btn-large btn-primary" %>
+      <% end %>
+    <% else %>
+    	<h1>Welcome to the PhotoBlog</h1>
+  	  <h2>
+  	    of Anja and Alexander
+  	  </h2>
     <% end %>
-  <% else %>
-  	<h1>Welcome to the PhotoBlog</h1>
-	  <h2>
-	    This is the home page for the
-	    <a <%= link_to "PhotoBlog", root_url, class: "main-link" %> </a> of .. and .. .
-	  </h2>
-    <%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
-  <% end %>
+  </div>
 </div>
 
 <div class="row-fluid">
@@ -25,8 +24,4 @@
       <%= will_paginate @posts %>
     <% end %>
   </div>
-</div>
-
-<div class="row-fluid">
-<%= link_to image_tag("rails.png", alt: "Rails"), 'http://rubyonrails.org/' %>
 </div>

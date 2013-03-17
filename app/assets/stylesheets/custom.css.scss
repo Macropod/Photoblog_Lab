@@ -223,3 +223,12 @@ aside {
   margin-left:auto;
   margin-right:auto;
 }
+
+/* background image */
+
+.bckgrnd-img {
+  background-image:url('background.jpg');
+  background-repeat:no-repeat;
+  background-size:contain;
+  min-height:500px;
+}
