@@ -11,18 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130317064604) do
+ActiveRecord::Schema.define(:version => 20130317082033) do
 
   create_table "posts", :force => true do |t|
     t.string   "text"
     t.integer  "user_id"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
+    t.datetime "created_at",                              :null => false
+    t.datetime "updated_at",                              :null => false
     t.string   "picture_file_name"
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
     t.string   "access_token"
+    t.boolean  "family",               :default => false
+    t.boolean  "friends",              :default => false
+    t.boolean  "others",               :default => true
   end
 
   add_index "posts", ["user_id", "created_at"], :name => "index_posts_on_user_id_and_created_at"
@@ -35,6 +38,9 @@ ActiveRecord::Schema.define(:version => 20130317064604) do
     t.string   "remember_token"
     t.boolean  "admin",           :default => false
     t.string   "access_token"
+    t.boolean  "family",          :default => false
+    t.boolean  "friends",         :default => false
+    t.boolean  "others",          :default => true
   end
 
   add_index "users", ["remember_token"], :name => "index_users_on_remember_token"

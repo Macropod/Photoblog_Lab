@@ -3,11 +3,28 @@
 <%= f.label :name %>
 <%= f.text_field :name %>
 
-<%= f.label :email %>
-<%= f.text_field :email %>
-
 <%= f.label :password %>
 <%= f.password_field :password %>
 
 <%= f.label :password_confirmation, "Confirm Password" %>
 <%= f.password_field :password_confirmation %>
+
+<div class="group-classification">
+
+	<%= f.radio_button :family, true %>
+	<%= f.label :family, :value => "Family visible" %>
+	<%= f.radio_button :family, false, :checked => true  %>
+	<%= f.label :family, :value => "Family not visible" %>
+
+
+	<%= f.radio_button :friends, true %>
+	<%= f.label :friends, :value => "Friends visible" %>
+	<%= f.radio_button :friends, false, :checked => true  %>
+	<%= f.label :friends, :value => "Friends not visible" %>
+
+
+	<%= f.radio_button :others, true %>
+	<%= f.label :others, :value => "Others visible" %>
+	<%= f.radio_button :others, false, :checked => true  %>
+	<%= f.label :others, :value => "Others not visible" %>
+</div>

@@ -1,12 +1,14 @@
-<li>
-  <span class="user"><%= post.user.name %></span><span class="timestamp"> Posted <%= time_ago_in_words(post.created_at) %> ago. </span>
-  <span class="picture"><%= image_tag( url_esc_post(100, :original, post) , class: "picture", alt: post.text ) %></span>
-  <span class="text"><%= post.text %></span>
-  <% if admin? %>
-      <span class="delete"> 
-	  	<%= link_to "Delete", post, method: :delete,
-	  								data: { confirm: "Are you sure?" },
-	  								title: post.text %>
-	  </span>
-  <% end %>
-</li>
+<% if correct_group?(post) %>
+  <li>
+    <span class="user"><%= post.user.name %></span><span class="timestamp"> Posted <%= time_ago_in_words(post.created_at) %> ago. </span>
+    <span class="picture"><%= image_tag( url_esc_post(100, :original, post) , class: "picture", alt: post.text ) %></span>
+    <span class="text"><%= post.text %></span>
+    <% if admin? %>
+        <span class="delete"> 
+  	  	<%= link_to "Delete", post, method: :delete,
+  	  								data: { confirm: "Are you sure?" },
+  	  								title: post.text %>
+  	  </span>
+    <% end %>
+  </li>
+<% end %>
