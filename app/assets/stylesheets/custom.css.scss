@@ -14,10 +14,12 @@ $grayMediumLight: #eaeaea;
 
 html {
   overflow-y: scroll;
+  height:100%;
 }
 
 body {
   padding-top: 60px;
+  height:100%;
 }
 
 section {
@@ -227,8 +229,24 @@ aside {
 /* background image */
 
 .bckgrnd-img {
-  background-image:url('background.jpg');
-  background-repeat:no-repeat;
-  background-size:contain;
-  min-height:500px;
+  min-width: 500px;
+  width: 100%;
+  height: auto;/*
+  position: absolute;
+  top: 20;
+  left: 0;*/
+  z-index: -1;
+}
+
+.hero-unit-mod {
+  height:auto;
+  padding: 60px;
+  margin-bottom: 30px;
+  /*background-color: rgb(238, 238, 238);*/
+  border-radius: 0px 0px 0px 0px;
+}
+
+/* home page text */
+.home-highlight-text {
+  color: rgb(120,127,176);
 }

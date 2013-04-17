@@ -4,10 +4,8 @@
 	<div class="row">
 	  <div class="span6 offset3">
 	    <%= form_for(@user) do |f| %>
-	      <div class="form-horizontal">
 		    <%= render 'fields', f: f %>
 		    <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
-		  </div>
 	    <% end %>
 	  </div>
 	</div>
