@@ -1,8 +1,31 @@
 <% if correct_group?(post) %>
   <li>
-    <span class="user"><%= post.user.name %></span><span class="timestamp"> Posted <%= time_ago_in_words(post.created_at) %> ago. </span>
+    <!--<span class="user"><%= post.user.name %></span>-->
+    <!--<span class="timestamp"> Posted <%= time_ago_in_words(post.created_at) %> ago. </span>-->
     <span class="picture"><%= image_tag( url_esc_post(100, :original, post) , class: "picture", alt: post.text ) %></span>
-    <span class="text"><%= post.text %></span>
+    <div class="row-fluid">
+      <div class="span8"><span class="text"><%= post.text %></span></div>
+      <div class="span4 timestamp">
+        Posted <%= time_ago_in_words(post.created_at) %> ago.
+      </div>
+    </div>
+    
+
+    <input type="checkbox" id=<%="expand_comments_#{post.comments.count}"%> role="button">
+    <label for=<%="expand_comments_#{post.comments.count}"%> onclick=""><span>Comments (<%= post.comments.count %>)</span><span>Hide comments!</span></label> 
+    <div id=<%="comment-section_#{post.comments.count}"%>>
+      <div class="comment-inner">
+        <h3>Comments (<%= post.comments.count %>)</h3>
+        <ol class="comments">
+          <%= render post.comments %>
+        </ol>
+        <%= form_for([post, post.comments.build]) do |f| %>
+          <%= f.label "Your comment" %>
+          <%= f.text_area :content, :rows => "2" %>
+          <%= f.submit "Post", class: "btn" %>
+        <% end %>
+      </div>
+    </div>
     <% if admin? %>
         <span class="delete"> 
   	  	<%= link_to "Delete", post, method: :delete,

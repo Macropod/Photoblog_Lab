@@ -194,6 +194,10 @@ input {
 /* posts */
 
 .posts {
+  transition: all 1s ease;
+}
+
+.posts {  
   list-style: none;
   margin: 10px 0 0 0;
 
@@ -207,9 +211,11 @@ input {
 }
 .text {
   display: block;
+  font-weight:bold;
 }
 .timestamp {
   color: $grayLight;
+  text-align:right;
 }
 aside {
   textarea {
@@ -249,4 +255,99 @@ aside {
 /* home page text */
 .home-highlight-text {
   color: rgb(120,127,176);
+}
+
+/* comments */
+
+.comments {
+  list-style: none;
+  margin: 10px 0 0 0;
+
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+  }
+}
+
+div[id^="comment-section"] > div{
+    margin-top: -10000px;
+    transition: margin-top 0s ease-in-out 1s;
+}
+
+div[id^="comment-section"]{
+    visibility: hidden;
+    opacity: 0;
+    overflow: hidden;
+    /*
+    transition: opacity 1s ease-in-out;
+    transition: visibility 1s ease-in-out 1s;
+    */
+    transition: visibility 0s ease-in-out 1s, opacity 1s ease-in-out 0s;
+}
+
+input[type=checkbox]:checked ~ div[id^="comment-section"] > div {
+    margin-top: 0px;
+    transition: margin-top 0s ease-in-out 0s;
+}
+
+input[type=checkbox]:checked ~ div[id^="comment-section"] {
+    overflow: hidden;
+    visibility: visible;
+    opacity:1;
+    transition: opacity 1s ease-in-out 0s;
+    
+}
+
+/*
+div[id^="comment-section"] {
+  
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: opacity 1s ease;
+    tansition: margin-top 1s ease 1s;
+  
+}
+*/
+
+input[type=checkbox] {
+    display: none;
+    visibility: hidden;
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+}
+
+[for^="expand_comments"] {
+    bottom: -3rem;
+    left: 0;
+    /*width: 100%;*/
+    text-align: center;
+    padding: .65rem;
+    box-shadow: inset 1px 1px rgba(0, 0, 0, 0.1), inset -1px -1px rgba(0, 0, 0, 0.1);
+}
+
+[for^="expand_comments"]:hover {
+    background: rgba(0,0,0,.5);
+    color: rgb(255,255,255);
+}
+
+[for^="expand_comments"] span:last-of-type {
+    display: none;
+    visibility: hidden;
+}
+
+input[type=checkbox]:checked ~ [for^="expand_comments"] span:first-of-type {
+    display: none;
+    visibility: hidden;
+}
+
+input[type=checkbox]:checked ~ [for^="expand_comments"] span:last-of-type {
+    display: block;
+    visibility: visible;
 }
