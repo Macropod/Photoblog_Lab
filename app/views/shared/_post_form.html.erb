@@ -5,15 +5,16 @@
   </div>
   <div class="picture_path">
     <%= f.label :picture %>
-	<%= f.file_field :picture %>
+	  <%= f.file_field :picture %>
   </div>
   <div class="group-classification">
   	<%= f.label :family %>
-  	<%= f.check_box :family %>
+  	<%= f.check_box :family, :class => 'visible-check-box' %>
   	<%= f.label :friends %>
   	<%= f.check_box :friends %>
   	<%= f.label :others %>
   	<%= f.check_box :others %>
   </div>
+  <%= f.select(:gallery_id, @galleries.collect {|a| [a.name, a.id]}) %>
   <%= f.submit "Post", class: "btn btn-large btn-primary" %>
 <% end %>

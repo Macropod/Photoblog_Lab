@@ -2,7 +2,7 @@ PhotoblogLab::Application.routes.draw do
   resources :users
   resources :sessions,    only: [:new, :create, :destroy]
   resources :posts,       only: [:new, :create, :destroy] 
-  
+  resources :galleries,   only: [:new, :create, :destroy, :show]
 
   resources :posts do
     resources :comments
@@ -21,6 +21,7 @@ PhotoblogLab::Application.routes.draw do
   match '/signout', to: 'sessions#destroy', via: :delete
 
   match '/newpost', to: 'posts#new'
+  match '/newgallery', to: 'galleries#new'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

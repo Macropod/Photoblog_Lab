@@ -1,0 +1,14 @@
+<div class="container">
+	<h1>Create a new gallery</h1>
+
+	<div class="row">
+	  <div class="span6 offset3">
+	    <%= form_for(@gallery) do |f| %>
+			<%= render 'shared/error_messages', object: f.object %>
+			<%= f.label :name %>
+			<%= f.text_field :name %>
+			<%= f.submit "Create gallery", class: "btn btn-large btn-primary" %>
+	    <% end %>
+	  </div>
+	</div>
+</div>

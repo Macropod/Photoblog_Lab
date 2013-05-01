@@ -5,6 +5,7 @@ class PostsController < ApplicationController
   def new
   	@title = "New post"
   	@post = current_user.posts.build
+    @galleries = Gallery.all;
   end
 
   def create

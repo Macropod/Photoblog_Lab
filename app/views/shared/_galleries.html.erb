@@ -1,0 +1,9 @@
+<% if @galleries.any? %>
+  <div id="galleries">
+    <ul>
+    <% @galleries.each do |gal| %>
+      <li><%= link_to gal.name, gal %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>

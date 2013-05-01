@@ -11,11 +11,10 @@
     </div>
     
 
-    <input type="checkbox" id=<%="expand_comments_#{post.comments.count}"%> role="button">
+    <input type="checkbox" id=<%="expand_comments_#{post.comments.count}"%> class="invisible-check-box" role="button">
     <label for=<%="expand_comments_#{post.comments.count}"%> onclick=""><span>Comments (<%= post.comments.count %>)</span><span>Hide comments!</span></label> 
     <div id=<%="comment-section_#{post.comments.count}"%>>
       <div class="comment-inner">
-        <h3>Comments (<%= post.comments.count %>)</h3>
         <ol class="comments">
           <%= render post.comments %>
         </ol>

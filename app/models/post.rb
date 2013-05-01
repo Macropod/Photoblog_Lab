@@ -12,8 +12,9 @@
 include ApplicationHelper
 
 class Post < ActiveRecord::Base
-  attr_accessible :text, :picture, :family, :friends, :others
+  attr_accessible :text, :picture, :family, :friends, :others, :gallery_id
   belongs_to :user
+  belongs_to :galleries
   has_many :comments, dependent: :destroy
   validates :user_id, presence: true
   validates :text, presence: true, length: { maximum: 140 }

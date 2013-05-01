@@ -1,0 +1,19 @@
+<div class="row-fluid">
+  <div class="span3">
+    <div class="well sidebar-nav sidebar-nav-fixed">
+      <%= render 'shared/galleries' %>
+    </div>
+  </div>
+  
+  <div class="span7">
+    <% if @posts.any? && signed_in? %>
+      <ol class="posts">
+        <%= render @posts %>
+      </ol>
+      <%= will_paginate @posts %>
+    <% end %>
+  </div>
+
+  <div class="span2">
+  </div>
+</div>

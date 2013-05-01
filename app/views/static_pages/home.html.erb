@@ -1,37 +1,56 @@
 <div class="row-fluid">
-  <div class="bckgrnd-img ">
-    <% if !signed_in? %>
-      <%= image_tag( 'background.jpg' , alt: "Sydney at night" ) %></div>
-    <% end %>
-    <div class="center hero-unit-mod">
-        <% if signed_in? %>
-          <div class="home-highlight-text">
-        	 <h1>Whats new?</h1>
-          </div>
-          <% if admin? %>
-            <%= link_to "Create a new post!", newpost_path, class: "btn btn-large btn-primary" %>
+  <div class="span3">
+  </div>
+  
+  <div class="span7">
+    <div class="bckgrnd-img ">
+      <% if !signed_in? %>
+        <%= image_tag( 'background.jpg' , alt: "Sydney at night" ) %></div>
+      <% end %>
+      <div class="center hero-unit-mod">
+          <% if signed_in? %>
+            <div class="home-highlight-text">
+             <h1>Whats new?</h1>
+            </div>
+            <% if admin? %>
+              <%= link_to "Create a new post!", newpost_path, class: "btn btn-large btn-primary" %>
+              <%= link_to "Create a new gallery!", newgallery_path, class: "btn btn-large btn-primary" %>
+            <% end %>
+          <% else %>
+            <div class="home-highlight-text">
+              <h1>Welcome to the PhotoBlog</h1>
+              <h2>
+                of Anja and Alexander
+              </h2>
+            </div>
           <% end %>
-        <% else %>
-          <div class="home-highlight-text">
-          	<h1>Welcome to the PhotoBlog</h1>
-        	  <h2>
-        	    of Anja and Alexander
-        	  </h2>
-          </div>
-        <% end %>
+      </div>
     </div>
+  </div>
+
+  <div class="span2">
   </div>
 </div>
 
+
 <div class="row-fluid">
-  <div class="container"> 
-    <div class="span12">
-      <% if @posts.any? && signed_in? %>
-        <ol class="posts">
-          <%= render @posts %>
-        </ol>
-        <%= will_paginate @posts %>
-      <% end %>
-    </div>
+  <div class="span3">
+    <% if signed_in? %>
+      <div class="well sidebar-nav sidebar-nav-fixed">
+        <%= render 'shared/galleries' %>
+      </div>
+    <% end %>
+  </div>
+  
+  <div class="span7">
+    <% if @posts.any? && signed_in? %>
+      <ol class="posts">
+        <%= render @posts %>
+      </ol>
+      <%= will_paginate @posts %>
+    <% end %>
+  </div>
+
+  <div class="span2">
   </div>
 </div>

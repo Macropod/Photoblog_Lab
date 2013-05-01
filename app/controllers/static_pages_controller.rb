@@ -8,6 +8,7 @@ class StaticPagesController < ApplicationController
     # end
     # @posts = @posts.paginate(page: params[:page])
     @posts = Post.paginate(page: params[:page])
+    @galleries = Gallery.all
   end
 
   def help
