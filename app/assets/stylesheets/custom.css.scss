@@ -119,6 +119,43 @@ footer {
   @include box_sizing;
 }
 
+/* buttons */
+
+.mod-button {
+    bottom: -3rem;
+    text-align: center;
+    padding: .65rem;
+    background-color: white;
+    border: 1px solid rgb(204, 204, 204);
+    border-radius: 3px 3px 3px 3px;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset;
+    -webkit-transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+    -moz-transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+    -ms-transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+    -o-transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+    transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+    padding: 6px 9px;
+    margin-bottom: 9px;
+    margin-top: 20px;
+    font-size: 14px;
+    line-height: 20px;
+    color: rgb(85, 85, 85);
+    left: 50%;
+}
+
+.mod-button:hover {
+    border-color: rgba(82, 168, 236, 0.8);
+    outline: 0px none;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgba(82, 168, 236, 0.6);
+    text-decoration: none;
+}
+
+.mod-lrg-button {
+    margin-top: 20px;
+    font-size: 1.7em;
+    padding: 8px 12px;
+}
+
 /* sidebar */
 
 aside {
@@ -194,7 +231,6 @@ input {
 /* posts */
 
 .posts {
-  transition: all 1s ease;
 }
 
 .posts {  
@@ -212,16 +248,26 @@ input {
 .text {
   display: block;
   font-weight:bold;
+  padding-left: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 .timestamp {
   color: $grayLight;
   text-align:right;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 aside {
   textarea {
     height: 100px;
     margin-bottom: 5px;
   }
+}
+
+.post-meta {
+  margin-bottom: 20px;
 }
 
 .picture {
@@ -255,23 +301,41 @@ aside {
 /* home page text */
 .home-highlight-text {
   color: rgb(120,127,176);
+  position: relative;
+  width: 100%;
+  margin: 0 0 0 -50%;
+  left: 50%;
 }
 
 /* comments */
 
 .comments {
   list-style: none;
-  margin: 10px 0 0 0;
+  margin: 0 0 0 0;
+  max-height: 500px; 
+  overflow-y: auto  ;
+  overflow-x: hidden;
 
   li {
-    padding: 10px 0;
+    padding-top: 5px;
+    padding-bottom: 5px;
     /*border-top: 1px solid #e8e8e8;*/
     border-bottom: 1px solid #e8e8e8;
   }
 }
 
+.single-comment {
+  padding-left: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
 div[id^="comment-section"] > div{
     margin-top: -10000px;
+    -webkit-transition: margin-top 0s ease-in-out 1s;
+    -moz-transition: margin-top 0s ease-in-out 1s;
+    -ms-transition: margin-top 0s ease-in-out 1s;
+    -o-transition: margin-top 0s ease-in-out 1s;
     transition: margin-top 0s ease-in-out 1s;
 }
 
@@ -279,11 +343,19 @@ div[id^="comment-section"]{
     visibility: hidden;
     opacity: 0;
     overflow: hidden;
+    -webkit-transition: visibility 0s ease-in-out 1s, opacity 1s ease-in-out 0s;
+    -moz-transition: visibility 0s ease-in-out 1s, opacity 1s ease-in-out 0s;
+    -ms-transition: visibility 0s ease-in-out 1s, opacity 1s ease-in-out 0s;
+    -o-transition: visibility 0s ease-in-out 1s, opacity 1s ease-in-out 0s;
     transition: visibility 0s ease-in-out 1s, opacity 1s ease-in-out 0s;
 }
 
 input[type=checkbox]:checked ~ div[id^="comment-section"] > div {
     margin-top: 0px;
+    -webkit-transition: margin-top 0s ease-in-out 0s;
+    -moz-transition: margin-top 0s ease-in-out 0s;
+    -ms-transition: margin-top 0s ease-in-out 0s;
+    -o-transition: margin-top 0s ease-in-out 0s;
     transition: margin-top 0s ease-in-out 0s;
 }
 
@@ -291,8 +363,11 @@ input[type=checkbox]:checked ~ div[id^="comment-section"] {
     overflow: hidden;
     visibility: visible;
     opacity:1;
+    -webkit-transition: opacity 1s ease-in-out 0s;
+    -moz-transition: opacity 1s ease-in-out 0s;
+    -ms-transition: opacity 1s ease-in-out 0s;
+    -o-transition: opacity 1s ease-in-out 0s;
     transition: opacity 1s ease-in-out 0s;
-    
 }
 
 .invisible-check-box {
@@ -316,12 +391,29 @@ input[type=checkbox] {
     left: 0;
     text-align: center;
     padding: .65rem;
-    box-shadow: inset 1px 1px rgba(0, 0, 0, 0.1), inset -1px -1px rgba(0, 0, 0, 0.1);
+    /*box-shadow: inset 1px 1px rgba(0, 0, 0, 0.1), inset -1px -1px rgba(0, 0, 0, 0.1);*/
+    background-color: white;
+    border: 1px solid rgb(204, 204, 204);
+    border-radius: 3px 3px 3px 3px;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset;
+    -webkit-transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+    -moz-transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+    -ms-transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+    -o-transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+    transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+    padding: 4px 6px;
+    margin-bottom: 9px;
+    font-size: 14px;
+    line-height: 20px;
+    color: rgb(85, 85, 85);
 }
 
 [for^="expand_comments"]:hover {
-    background: rgba(0,0,0,.5);
-    color: rgb(255,255,255);
+    /*background: rgba(0,0,0,.5);
+    color: rgb(255,255,255);*/
+    border-color: rgba(82, 168, 236, 0.8);
+    outline: 0px none;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgba(82, 168, 236, 0.6);
 }
 
 [for^="expand_comments"] span:last-of-type {
@@ -338,6 +430,48 @@ input[type=checkbox]:checked ~ [for^="expand_comments"] span:last-of-type {
     display: block;
     visibility: visible;
 }
+
+.comment-content {
+    margin-top: 20px
+}
+
+.comment-name {
+    margin-top: 20px
+}
+
+.comment-creator {
+    font-weight: bold;
+    color: $grayDarker;
+}
+
+.btn-sleek {
+    left: 0;
+    width: 100%;
+    text-align: center;
+    padding: .65rem;
+    /*box-shadow: inset 1px 1px rgba(0, 0, 0, 0.1), inset -1px -1px rgba(0, 0, 0, 0.1);*/
+    background-color: white;
+    border: 1px solid rgb(204, 204, 204);
+    border-radius: 3px 3px 3px 3px;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset;
+    -webkit-transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+    -moz-transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+    -ms-transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+    -o-transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+    transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+    padding: 4px 6px;
+    margin-bottom: 9px;
+    font-size: 14px;
+    line-height: 20px;
+    color: rgb(85, 85, 85);
+}
+
+.btn-sleek:hover {
+    border-color: rgba(82, 168, 236, 0.8);
+    outline: 0px none;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgba(82, 168, 236, 0.6);
+}
+
 
 /* sidebar */
 
@@ -358,5 +492,19 @@ input[type=checkbox]:checked ~ [for^="expand_comments"] span:last-of-type {
     .sidebar-nav-fixed {
         top:70px;
     }
+}
+
+.gallery-link {
+    text-decoration: none;
+    color: rgb(85, 85, 85);
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.gallery-link.hover {
+    text-decoration: none;
+    color: rgba(82, 168, 236, 0.8);
 }
 

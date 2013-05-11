@@ -1,8 +1,8 @@
 <li>
   <div class="row-fluid">
-	  <div class="span8"><%= comment.content %></div>
+	  <div class="span8 single-comment"><%= comment.content %></div>
 	  <div class="span4 timestamp">
-	    Posted <%= time_ago_in_words(comment.created_at) %> ago.
+	    Posted by <span class="comment-creator"><%= comment.name %></span> <%= time_ago_in_words(comment.created_at) %> ago.
 	     <% if admin? %>
 	        <span class="delete"> 
 	  	  	<%= link_to "Delete", comment, method: :delete,

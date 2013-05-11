@@ -7,24 +7,26 @@
       <% if !signed_in? %>
         <%= image_tag( 'background.jpg' , alt: "Sydney at night" ) %></div>
       <% end %>
-      <div class="center hero-unit-mod">
-          <% if signed_in? %>
-            <div class="home-highlight-text">
-             <h1>Whats new?</h1>
-            </div>
-            <% if admin? %>
-              <%= link_to "Create a new post!", newpost_path, class: "btn btn-large btn-primary" %>
-              <%= link_to "Create a new gallery!", newgallery_path, class: "btn btn-large btn-primary" %>
-            <% end %>
-          <% else %>
+      <% if signed_in? %>
+        <div class="home-highlight-text">
+           <h1>Whats new?</h1>
+          
+          <% if admin? %>
+            <%= link_to "Create a new post!", newpost_path, class: "btn btn-large btn-primary" %>
+            <%= link_to "Create a new gallery!", newgallery_path, class: "btn btn-large btn-primary" %>
+          <% end %>
+        </div>
+      <% else %>
+          <div class="center hero-unit-mod">
             <div class="home-highlight-text">
               <h1>Welcome to the PhotoBlog</h1>
               <h2>
                 of Anja and Alexander
               </h2>
             </div>
-          <% end %>
-      </div>
+            <%= link_to "Sign in!", signin_path, class: "mod-button mod-lrg-button" %>
+          </div>
+      <% end %>
     </div>
   </div>
 

@@ -2,7 +2,11 @@
   <div id="galleries">
     <ul>
     <% @galleries.each do |gal| %>
-      <li><%= link_to gal.name, gal %></li>
+      <% if @gallery_id.to_i == gal.id.to_i %>
+        <li><%= link_to gal.name, gal, :class=>"gallery-link bold" %></li>
+      <% else %>
+        <li><%= link_to gal.name, gal, :class=>"gallery-link" %></li>
+      <% end %>
     <% end %>
     </ul>
   </div>

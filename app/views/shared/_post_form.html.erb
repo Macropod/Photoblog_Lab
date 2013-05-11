@@ -12,7 +12,7 @@
   	<%= f.check_box :family, :class => 'visible-check-box' %>
   	<%= f.label :friends %>
   	<%= f.check_box :friends %>
-  	<%= f.label :others %>
+  	<%= f.label "Family 2" %>
   	<%= f.check_box :others %>
   </div>
   <%= f.select(:gallery_id, @galleries.collect {|a| [a.name, a.id]}) %>

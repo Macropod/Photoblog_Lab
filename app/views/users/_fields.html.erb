@@ -12,9 +12,9 @@
 <div class="group-classification">
 
 	<%= f.radio_button :family, true %>
-	<%= f.label :family, :value => "Family visible" %>
+	<%= f.label :family, :value => "Family 1 visible" %>
 	<%= f.radio_button :family, false, :checked => true  %>
-	<%= f.label :family, :value => "Family not visible" %>
+	<%= f.label :family, :value => "Family 1 not visible" %>
 
 
 	<%= f.radio_button :friends, true %>
@@ -24,7 +24,7 @@
 
 
 	<%= f.radio_button :others, true %>
-	<%= f.label :others, :value => "Others visible" %>
+	<%= f.label "Family 2", :value => "Family 2 visible" %>
 	<%= f.radio_button :others, false, :checked => true  %>
-	<%= f.label :others, :value => "Others not visible" %>
+	<%= f.label "Family 2", :value => "Family 2 not visible" %>
 </div>
