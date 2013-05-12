@@ -8,7 +8,7 @@ class GalleriesController < ApplicationController
   end
 
   def show
-    @posts = Post.where(:gallery_id => params[:id]).paginate(page: params[:page])
+    @posts = Post.where(:gallery_id => params[:id]).paginate(page: params[:page], :per_page => 20)
     @galleries = Gallery.all
     @gallery_id = params[:id]
     if !params[:page].nil?

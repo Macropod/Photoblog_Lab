@@ -7,7 +7,7 @@ class StaticPagesController < ApplicationController
     #   end
     # end
     # @posts = @posts.paginate(page: params[:page])
-    @posts = Post.paginate(page: params[:page])
+    @posts = Post.paginate(page: params[:page], :per_page => 20)
     @galleries = Gallery.all
     if !params[:page].nil?
       @page = params[:page]
