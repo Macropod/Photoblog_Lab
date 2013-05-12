@@ -24,7 +24,7 @@ class CommentsController < ApplicationController
       flash[:success] = "Comment created!"
       render "galleries/show"
     else
-      flash[:error] = "Comment could not be created!"
+      flash[:error] = "Comment could not be created. Did you forget your name?"
       render "galleries/show"
     end
   end

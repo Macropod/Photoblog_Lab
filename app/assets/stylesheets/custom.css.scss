@@ -508,3 +508,12 @@ input[type=checkbox]:checked ~ [for^="expand_comments"] span:last-of-type {
     color: rgba(82, 168, 236, 0.8);
 }
 
+/* 404 page */
+
+div.dialog {
+    width: 400px;
+    padding: 0 4em;
+    margin: 4em auto 0 auto;
+    text-align: center;
+}
+
