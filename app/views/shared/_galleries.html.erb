@@ -7,7 +7,9 @@
       <% else %>
         <li><%= link_to gal.name, gal, :class=>"gallery-link" %></li>
       <% end %>
+      <% if admin? %>
       | <%= link_to "delete", gal, method: :delete, data: { confirm: "You sure?" } %>
+      <% end %>
     <% end %>
     </ul>
   </div>
