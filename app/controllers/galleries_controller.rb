@@ -9,7 +9,7 @@ class GalleriesController < ApplicationController
 
   def show
     @posts = Post.where(:gallery_id => params[:id]).paginate(page: params[:page], :per_page => 20)
-    @galleries = Gallery.all
+    @galleries = galleries(current_user)
     @gallery_id = params[:id]
     if !params[:page].nil?
       @page = params[:page]
