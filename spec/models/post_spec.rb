@@ -2,11 +2,20 @@
 #
 # Table name: posts
 #
-#  id         :integer          not null, primary key
-#  text       :string(255)
-#  user_id    :integer
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id                   :integer          not null, primary key
+#  text                 :string(255)
+#  user_id              :integer
+#  created_at           :datetime         not null
+#  updated_at           :datetime         not null
+#  picture_file_name    :string(255)
+#  picture_content_type :string(255)
+#  picture_file_size    :integer
+#  picture_updated_at   :datetime
+#  access_token         :string(255)
+#  family               :boolean          default(FALSE)
+#  friends              :boolean          default(FALSE)
+#  others               :boolean          default(TRUE)
+#  gallery_id           :integer
 #
 
 require 'spec_helper'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130501094245) do
+ActiveRecord::Schema.define(:version => 20130518043226) do
 
   create_table "comments", :force => true do |t|
     t.string   "content"
@@ -27,7 +27,12 @@ ActiveRecord::Schema.define(:version => 20130501094245) do
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.date     "start_date"
+    t.date     "end_date"
   end
+
+  add_index "galleries", ["end_date"], :name => "index_galleries_on_end_date"
+  add_index "galleries", ["start_date"], :name => "index_galleries_on_start_date"
 
   create_table "posts", :force => true do |t|
     t.string   "text"

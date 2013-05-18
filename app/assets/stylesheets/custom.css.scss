@@ -191,7 +191,7 @@ aside {
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
   width: 100%;
-  padding: 10px;
+  /*padding: 4px 6px;*/
   margin-bottom: 15px;
   @include box_sizing;
 }
@@ -507,6 +507,23 @@ input[type=checkbox]:checked ~ [for^="expand_comments"] span:last-of-type {
 .gallery-link.hover {
     text-decoration: none;
     color: rgba(82, 168, 236, 0.8);
+}
+
+.time-interval {
+    width:100%;
+    text-align: right;
+}
+
+.galleries {
+
+  ul {
+    margin: 5px 5px 5px 5px;
+    list-style-type: none;  
+    li {
+      &:first-child {
+      }
+    }
+  }
 }
 
 /* 404 page */

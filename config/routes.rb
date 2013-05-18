@@ -1,8 +1,8 @@
 PhotoblogLab::Application.routes.draw do
   resources :users
   resources :sessions,    only: [:new, :create, :destroy]
-  resources :posts,       only: [:new, :create, :destroy] 
-  resources :galleries,   only: [:new, :create, :destroy, :show]
+  resources :posts,       only: [:new, :create, :edit, :update, :destroy, :index] 
+  resources :galleries,   only: [:new, :create, :edit, :update, :destroy, :show, :index]
 
   resources :posts do
     resources :comments

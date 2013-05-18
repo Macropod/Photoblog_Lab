@@ -2,19 +2,17 @@
 #
 # Table name: users
 #
-#  id                  :integer          not null, primary key
-#  name                :string(255)
-#  email               :string(255)
-#  created_at          :datetime         not null
-#  updated_at          :datetime         not null
-#  password_digest     :string(255)
-#  remember_token      :string(255)
-#  admin               :boolean          default(FALSE)
-#  avatar_file_name    :string(255)
-#  avatar_content_type :string(255)
-#  avatar_file_size    :integer
-#  avatar_updated_at   :datetime
-#  access_token        :string(255)
+#  id              :integer          not null, primary key
+#  name            :string(255)
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  password_digest :string(255)
+#  remember_token  :string(255)
+#  admin           :boolean          default(FALSE)
+#  access_token    :string(255)
+#  family          :boolean          default(FALSE)
+#  friends         :boolean          default(FALSE)
+#  others          :boolean          default(TRUE)
 #
 
 class User < ActiveRecord::Base

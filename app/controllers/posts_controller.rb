@@ -5,7 +5,29 @@ class PostsController < ApplicationController
   def new
   	@title = "New post"
   	@post = current_user.posts.build
-    @galleries = Gallery.all;
+    @galleries = Gallery.all
+  end
+
+  def index
+    @title = "Posts Overview"
+    @posts = Post.all
+  end
+
+
+  def edit
+    @post = Post.find_by_id(params[:id])
+    @title = "Update Post"
+    @galleries = Gallery.all
+  end
+
+  def update
+    @post = Post.find_by_id(params[:id])
+    if @post.update_attributes(params[:post])
+      flash[:success] = "Post updated"
+      redirect_to posts_path
+    else
+      render 'edit'
+    end
   end
 
   def create

@@ -7,7 +7,26 @@
           <li><%= link_to "Home",    root_path %></li>
           <% if signed_in? %>
             <% if admin? %>
-              <li><%= link_to "New post", newpost_path %></li>
+              <li id="fat-menu" class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  Galleries <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><%= link_to "New", newgallery_path %></li>
+                  <li class="divider"></li>
+                  <li><%= link_to "Overview", galleries_path %></li>
+                </ul>
+              </li>
+              <li id="fat-menu" class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  Posts <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><%= link_to "New", newpost_path %></li>
+                  <li class="divider"></li>
+                  <li><%= link_to "Overview", posts_path %></li>
+                </ul>
+              </li>
               <li id="fat-menu" class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   Users <b class="caret"></b>

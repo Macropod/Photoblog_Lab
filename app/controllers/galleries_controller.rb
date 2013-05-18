@@ -1,6 +1,6 @@
 class GalleriesController < ApplicationController
   before_filter :signed_in_user
-  before_filter :admin_user,      only: [:new, :create, :destroy]
+  before_filter :admin_user,      only: [:new, :create, :edit, :update, :destroy, :index]
 
   def new
     @gallery = Gallery.new
@@ -18,14 +18,34 @@ class GalleriesController < ApplicationController
     end
   end
 
+  def index
+    @title = "Galleries Overview"
+    @galleries = galleries(current_user)
+  end
+
   def create
-     @gallery = Gallery.new(params[:gallery])
+    @gallery = Gallery.new(params[:gallery])
     if @gallery.save
       flash[:success] = "Gallery created!"
       redirect_to root_url
     else
       flash[:error] = "Gallery was not created successfully!"
       redirect_to root_url
+    end
+  end
+
+  def edit
+    @gallery = Gallery.find_by_id(params[:id])
+    @title = "Update Gallery"
+  end
+
+  def update
+    @gallery = Gallery.find_by_id(params[:id])
+    if @gallery.update_attributes(params[:gallery])
+      flash[:success] = "Gallery updated"
+      redirect_to galleries_path
+    else
+      render 'edit'
     end
   end
 
