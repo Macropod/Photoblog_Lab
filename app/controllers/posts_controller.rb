@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_filter :signed_in_user
-  before_filter :admin_user
+  before_filter :admin_user,      except: [:index]
 
   def new
   	@title = "New post"
@@ -10,7 +10,17 @@ class PostsController < ApplicationController
 
   def index
     @title = "Posts Overview"
-    @posts = Post.all
+    if admin?
+      @posts = Post.all
+    else
+      @posts = Post.paginate(page: params[:page], :per_page => 20)
+      @galleries = galleries(current_user)
+      if !params[:page].nil?
+        @page = params[:page]
+      else
+        @page = 0
+      end
+    end
   end
 
 
