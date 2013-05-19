@@ -520,6 +520,8 @@ input[type=checkbox]:checked ~ [for^="expand_comments"] span:last-of-type {
     margin: 5px 5px 5px 5px;
     list-style-type: none;  
     li {
+      display:inline-block;
+      width: 100%;
       &:first-child {
       }
     }

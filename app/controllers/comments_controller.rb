@@ -17,7 +17,7 @@ class CommentsController < ApplicationController
     else
       @posts = Post.where(:gallery_id => params[:gallery_id]).paginate(page: page)
     end
-    @galleries = Gallery.all
+    @galleries = galleries(current_user)
     @gallery_id = params[:gallery_id]
     #render :inline => "<%= debug(params) if Rails.env.development? %>"
     if @comment.save
