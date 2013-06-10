@@ -3,9 +3,9 @@
 	<div class="row-fluid">
 	  <div class="span3">
 	    <% if signed_in? %>
-	      <div class="well sidebar-nav sidebar-nav-fixed">
-	        <%= render 'shared/galleries' %>
-	      </div>
+	      	<div class="well sidebar-nav gallery-sidebar">
+	        	<%= render 'shared/galleries' %>
+	        </div>
 	    <% end %>
 	  </div>
 
@@ -28,28 +28,29 @@
 	<div class="container">
 		<h1>All posts</h1>
 		<ol class="posts">
-			<% @posts.each do |post| %>
+			<% @posts.each do |post| %>	
 				<li>
-				    <span class="picture"><%= image_tag( url_esc_post(100, :thumb, post) , class: "picture", alt: post.text ) %></span>
-				    <div class="row-fluid post-meta">
-				      <div class="post-meta2">
-				        <div class="span8"><span class="text"><%= post.text %></span></div>
-				        <div class="span4 timestamp">
-				          Posted <%= time_ago_in_words(post.created_at) %> ago.
-				        </div>
-				        Family 1: <%= post.family %> Friends 1: <%= post.friends %> Family 2: <%= post.others %> Gallery:  <%= post.gallery.name unless post.gallery.nil? %> Number of comments: <%= post.comments.count %>
-				      </div>
-				    </div>
-				    <% if admin? %>
-				        <span class="delete"> 
-				  	  	<%= link_to "Delete", post, method: :delete,
-				  	  								data: { confirm: "Are you sure?" },
-				  	  								title: post.text %>
-				  	  	| <%= link_to "update", edit_post_path(post.id) %>
-				  	    </span>
-				    <% end %>
+			        <span class="picture"><%= image_tag( url_esc_post(100, :thumb, post) , class: "picture", alt: post.text ) %></span>
+			        <div class="row-fluid post-meta">
+			          <div class="post-meta2">
+			            <div class="span8"><span class="text"><%= post.text %></span></div>
+			            <div class="span4 timestamp">
+			              Posted <%= time_ago_in_words(post.created_at) %> ago.
+			            </div>
+			            Family 1: <%= post.family %> Friends 1: <%= post.friends %> Family 2: <%= post.others %> Gallery:  <%= post.gallery.name unless post.gallery.nil? %> Number of comments: <%= post.comments.count %>
+			          </div>
+			        </div>
+			        <% if admin? %>
+			            <span class="delete"> 
+			            <%= link_to "Delete", post, method: :delete,
+			                          data: { confirm: "Are you sure?" },
+			                          title: post.text %>
+			            | <%= link_to "update", edit_post_path(post.id) %>
+			            </span>
+			        <% end %>
 			    </li>
-			<%end%>
+		    <%end%>
 		</ol>
+		<%= will_paginate @posts %>
 	</div>
 <% end %>

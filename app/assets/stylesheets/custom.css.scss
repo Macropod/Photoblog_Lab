@@ -521,11 +521,34 @@ input[type=checkbox]:checked ~ [for^="expand_comments"] span:last-of-type {
     list-style-type: none;  
     li {
       display:inline-block;
-      width: 100%;
+      width: 87.88%;
       &:first-child {
       }
     }
   }
+}
+
+.gallery-sidebar {
+  width:90%;
+  margin-top: 40px;
+}
+
+ @media (max-width: 767px) {
+     .gallery-sidebar {
+         
+     }
+ }
+
+ @media (max-width: 979px) {
+     .gallery-sidebar {
+        
+     }
+ }
+
+.fixed {
+    position: fixed;
+    /*right: 50%;*/
+    /*margin-right: -50%;*/
 }
 
 /* 404 page */

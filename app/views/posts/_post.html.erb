@@ -44,7 +44,9 @@
   	  	<%= link_to "Delete", post, method: :delete,
   	  								data: { confirm: "Are you sure?" },
   	  								title: post.text %>
+        | <%= link_to "update", edit_post_path(post.id) %>
   	  </span>
     <% end %>
   </li>
 <% end %>
+
