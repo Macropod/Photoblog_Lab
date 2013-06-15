@@ -1,0 +1,27 @@
+<div class="container">
+	<h1>All comments</h1>
+	<ol class="comments">
+		<% @comments.each do |comment| %>	
+			<li>
+		        <div class="comment_gallery">
+		        	<% if !comment.post.gallery.nil? %>
+		        		Gallery: <%= link_to comment.post.gallery.name, comment.post.gallery, :class=>"gallery-link"%> 
+		        	<% end %>
+		        </div>
+		        <div class="comment_post">
+		        	Post: <%= comment.post.text unless comment.post.gallery.nil? %>		        	
+		        </div>
+		        <div class="comment_content">
+		        	Content: <%= comment.content %>		        	
+		        </div>
+		        <% if admin? %>
+		            <span class="delete"> 
+		            <%= link_to "Delete", comment, method: :delete,
+		                          data: { confirm: "Are you sure?" },
+		                          title: comment.content %>
+		            </span>
+		        <% end %>
+		    </li>
+	    <%end%>
+	</ol>
+</div>

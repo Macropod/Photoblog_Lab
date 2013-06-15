@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_filter :signed_in_user
-  before_filter :admin_user, only: [:destroy]
+  before_filter :admin_user, only: [:destroy, :index]
 
   def create
   	@post = Post.find(params[:post_id])
@@ -41,4 +41,8 @@ class CommentsController < ApplicationController
     end
   end
 
+  def index
+    @comments = Comment.all
+    @post 
+  end
 end

@@ -7,7 +7,7 @@ PhotoblogLab::Application.routes.draw do
   resources :posts do
     resources :comments
   end
-  resources :comments,  only: [:create, :destroy]
+  resources :comments,  only: [:create, :destroy, :index]
   
   root to: 'static_pages#home'
 
