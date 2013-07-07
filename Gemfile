@@ -1,5 +1,4 @@
 source 'https://rubygems.org'
-ruby "2.0.0"
 
 gem 'rails', '4.0.0'
 gem 'bootstrap-sass'
@@ -12,6 +11,7 @@ gem 'protected_attributes'
 gem 'rails_12factor'  # for Heroku deployment
 
 group :development, :test do
+  ruby "1.9.3"
   # gem 'sqlite3', '1.3.5'
   gem 'rspec-rails', '2.11.0'
   gem 'guard-rspec', '1.2.1'
@@ -38,5 +38,5 @@ end
 gem 'pg'
 
 group :production do
-  
+  #ruby "2.0.0"
 end
