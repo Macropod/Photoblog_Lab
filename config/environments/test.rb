@@ -12,7 +12,7 @@ PhotoblogLab::Application.configure do
   config.static_cache_control = "public, max-age=3600"
 
   # Log error messages when you accidentally call methods on nil
-  config.whiny_nils = true
+  #config.whiny_nils = true
 
   # Show full error reports and disable caching
   config.consider_all_requests_local       = true
@@ -40,4 +40,7 @@ PhotoblogLab::Application.configure do
   silence_warnings do
     BCrypt::Engine::DEFAULT_COST = BCrypt::Engine::MIN_COST
   end
+
+  #eager_load
+  config.eager_load = false
 end

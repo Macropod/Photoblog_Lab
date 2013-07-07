@@ -78,5 +78,8 @@ PhotoblogLab::Application.configure do
     :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
   },
   :s3_permissions => :private
+
+  #eager_load
+  config.eager_load = true
 }
 end

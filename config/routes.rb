@@ -15,13 +15,13 @@ PhotoblogLab::Application.routes.draw do
   # match '/about',   to: 'static_pages#about'
   # match '/contact', to: 'static_pages#contact'
 
-  match '/signup',  to: 'users#new'
+  match '/signup',  to: 'users#new', via: :get
 
-  match '/signin',  to: 'sessions#new'
+  match '/signin',  to: 'sessions#new', via: :get
   match '/signout', to: 'sessions#destroy', via: :delete
 
-  match '/newpost', to: 'posts#new'
-  match '/newgallery', to: 'galleries#new'
+  match '/newpost', to: 'posts#new', via: :get
+  match '/newgallery', to: 'galleries#new', via: :get
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
