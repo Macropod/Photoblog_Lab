@@ -9,6 +9,7 @@ gem 'bootstrap-will_paginate'
 gem 'paperclip'
 gem 'aws-sdk'
 gem 'protected_attributes'
+gem 'rails_12factor'  # for Heroku deployment
 
 group :development, :test do
   # gem 'sqlite3', '1.3.5'
