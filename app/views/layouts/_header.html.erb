@@ -1,57 +1,65 @@
-<header class="navbar navbar-fixed-top navbar-inverse nav-header-a">
-  <div class="navbar-inner">
-    <div class="container-fluid">
+<header class="navbar navbar-fixed-top navbar-inverse", role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-PB-navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
       <%= link_to "Photoblog", root_path, id: "logo" %>
-      <nav>
-        <ul class="nav pull-right">
-          <li><%= link_to "Home",    root_path %></li>
-          <% if signed_in? %>
-            <% if admin? %>
-              <li id="fat-menu" class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  Galleries <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu">
-                  <li><%= link_to "New", newgallery_path %></li>
-                  <li class="divider"></li>
-                  <li><%= link_to "Overview", galleries_path %></li>
-                </ul>
-              </li>
-              <li id="fat-menu" class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  Posts <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu">
-                  <li><%= link_to "New", newpost_path %></li>
-                  <li class="divider"></li>
-                  <li><%= link_to "Overview", posts_path %></li>
-                </ul>
-              </li>
-              <li id="fat-menu" class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  Comments <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu">
-                  <li><%= link_to "Overview", comments_path %></li>
-                </ul>
-              </li>
-              <li id="fat-menu" class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  Users <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu">
-                  <li><%= link_to "Overview", users_path %></li>
-                  <li class="divider"></li>
-                  <li><%= link_to "Create a user", signup_path %></li>
-                </ul>
-              </li>
-            <% end %>
-            <li><%= link_to "Sign Out", signout_path, method: "delete" %></li>
-          <% else %>
-            <li><%= link_to "Sign In", signin_path %></li>
-          <% end %>
-        </ul>
-      </nav>
     </div>
-  </div>
+    <div class="collapse navbar-collapse navbar-right" id="bs-PB-navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><%= link_to "Home",    root_path %></li>
+        <% if signed_in? %>
+          <% if admin? %>
+            <li id="fat-menu" class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Galleries <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "New", newgallery_path %></li>
+                <li class="divider"></li>
+                <li><%= link_to "Overview", galleries_path %></li>
+              </ul>
+            </li>
+            <li id="fat-menu" class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Posts <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "New", newpost_path %></li>
+                <li class="divider"></li>
+                <li><%= link_to "Overview", posts_path %></li>
+              </ul>
+            </li>
+            <li id="fat-menu" class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Comments <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "Overview", comments_path %></li>
+              </ul>
+            </li>
+            <li id="fat-menu" class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Users <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "Overview", users_path %></li>
+                <li class="divider"></li>
+                <li><%= link_to "Create a user", signup_path %></li>
+              </ul>
+            </li>
+          <% end %>
+          <li><%= link_to "Sign Out", signout_path, method: "delete" %></li>
+        <% else %>
+          <li><%= link_to "Sign In", signin_path %></li>
+        <% end %>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+
 </header>

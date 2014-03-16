@@ -1,12 +1,10 @@
 <% if correct_group?(post) %>
   <li>
-    <!--<span class="user"><%= post.user.name %></span>-->
-    <!--<span class="timestamp"> Posted <%= time_ago_in_words(post.created_at) %> ago. </span>-->
     <span class="picture"><%= image_tag( url_esc_post(100, :original, post) , class: "picture", alt: post.text ) %></span>
-    <div class="row-fluid post-meta">
+    <div class="row post-meta">
       <div class="post-meta2">
-        <div class="span8"><span class="text"><%= post.text %></span></div>
-        <div class="span4 timestamp">
+        <div class="col-md-8"><span class="text"><%= post.text %></span></div>
+        <div class="col-md-4 timestamp">
           Posted <%= time_ago_in_words(post.created_at) %> ago.
         </div>
       </div>
@@ -21,12 +19,12 @@
           <%= render post.comments %>
         </ol>
         <%= form_for([post, post.comments.build]) do |f| %>
-        <div class="row-fluid">
+        <div class="row">
           <%= render 'shared/error_messages', object: f.object %>
-          <div class="span8">
+          <div class="col-md-8">
             <%= f.text_area :content, :rows => "2", :placeholder => "Your comment", :class => "comment-content" %>
           </div>
-          <div class="span4">
+          <div class="col-md-4">
             <%= hidden_field_tag 'gallery_id', @gallery_id %>
             <%= hidden_field_tag 'page', "#{@page}" %>
             <%= f.text_field :name, :placeholder => "Your name", :class => "comment-name" %>

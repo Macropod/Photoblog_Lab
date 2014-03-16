@@ -1,12 +1,13 @@
-<div class="row-fluid">
-  <div class="span2">
+<div class="row">
+  <div class="col-md-1">
   </div>
 
-  <div class="span8">
-    <div class="bckgrnd-img ">
-      <%= image_tag( 'background.jpg' , alt: "Sydney at night" ) %>
+  <div class="col-md-10">
+    <div class="bckgrnd-img">
+      <%= image_tag( 'background.jpg' , alt: "Sydney at night") %>
+    </div>
       <% if signed_in? %>
-        <div class="center hero-unit-mod">
+        <div class="center jumbotron">
           <div class="home-highlight-text">
              <h1>Welcome back!</h1>
           </div>
@@ -14,7 +15,7 @@
           <%= link_to "To the posts", posts_path, class: "mod-button mod-lrg-button" %>
         </div>
       <% else %>
-          <div class="center hero-unit-mod">
+          <div class="center jumbotron">
             <div class="home-highlight-text">
               <h1>Welcome to the PhotoBlog</h1>
               <h2>
@@ -24,10 +25,9 @@
             <%= link_to "Sign in!", signin_path, class: "mod-button mod-lrg-button" %>
           </div>
       <% end %>
-    </div>
   </div>
 
-  <div class="span2">
+  <div class="col-md-1">
   </div>
 </div>
 

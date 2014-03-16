@@ -2,7 +2,7 @@
 	<h1>Create a new gallery</h1>
 
 	<div class="row">
-	  <div class="span6 offset3">
+	  <div class="col-md-6 col-md-offset-3">
 	    <%= form_for(@gallery) do |f| %>
 			<%= render 'fields', f: f %>
 			<%= f.submit "Create gallery", class: "btn btn-large btn-primary" %>

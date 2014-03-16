@@ -1,18 +1,20 @@
 <% if @galleries.any? %>
   <div class="galleries">
-    <ul>
+    <ul class="noindent">
     <% @galleries.each do |gal| %>    
       <li>
-        <span class="span6">
-          <% if @gallery_id.to_i == gal.id.to_i %>
-            <span class="bold"><%= link_to gal.name, gal, :class=>"gallery-link" %></span>
-          <% else %>
-            <%= link_to gal.name, gal, :class=>"gallery-link" %>
-          <% end %>
-        </span>
-        <span class="span6 time-interval">
-            <%= date_interval(gal.start_date,gal.end_date) %>
-        </span>
+        <div class="row">
+          <span class="col-md-6">
+            <% if @gallery_id.to_i == gal.id.to_i %>
+              <span class="bold"><%= link_to gal.name, gal, :class=>"gallery-link" %></span>
+            <% else %>
+              <%= link_to gal.name, gal, :class=>"gallery-link" %>
+            <% end %>
+          </span>
+          <span class="col-md-6 time-interval">
+              <%= date_interval(gal.start_date,gal.end_date) %>
+          </span>
+        </div>
       </li>
       <% if admin? %>
       | <%= link_to "delete", gal, method: :delete, data: { confirm: "You sure?" } %> | <%= link_to "update", edit_gallery_path(gal.id) %>

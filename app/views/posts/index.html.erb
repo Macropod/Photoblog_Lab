@@ -1,18 +1,15 @@
 
 <% if !admin? %>
-	<div class="row-fluid">
-	  <div class="span3">
+	<div class="row">
+	  <div class="col-md-3">
 	    <% if signed_in? %>
 	      	<div class="well sidebar-nav gallery-sidebar">
 	        	<%= render 'shared/galleries' %>
 	        </div>
 	    <% end %>
 	  </div>
-
-	  <div class="span1">
-	  </div>
 	  
-	  <div class="span7">
+	  <div class="col-md-8">
 	    <% if @posts.any? && signed_in? %>
 	      <ol class="posts">
 	        <%= render @posts %>
@@ -21,7 +18,7 @@
 	    <% end %>
 	  </div>
 
-	  <div class="span1">
+	  <div class="col-md-1">
 	  </div>
 	</div>
 <% else %>
@@ -30,11 +27,11 @@
 		<ol class="posts">
 			<% @posts.each do |post| %>	
 				<li>
-			        <span class="picture"><%= image_tag( url_esc_post(100, :thumb, post) , class: "picture", alt: post.text ) %></span>
-			        <div class="row-fluid post-meta">
+			        <span class="picture-small"><%= image_tag( url_esc_post(100, :thumb, post) , class: "picture-small", alt: post.text ) %></span>
+			        <div class="row post-meta">
 			          <div class="post-meta2">
-			            <div class="span8"><span class="text"><%= post.text %></span></div>
-			            <div class="span4 timestamp">
+			            <div class="col-md-8"><span class="text"><%= post.text %></span></div>
+			            <div class="col-md-4 timestamp">
 			              Posted <%= time_ago_in_words(post.created_at) %> ago.
 			            </div>
 			            Family 1: <%= post.family %> Friends 1: <%= post.friends %> Family 2: <%= post.others %> Gallery:  <%= post.gallery.name unless post.gallery.nil? %> Number of comments: <%= post.comments.count %>

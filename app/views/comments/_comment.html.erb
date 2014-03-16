@@ -1,7 +1,7 @@
 <li>
-  <div class="row-fluid">
-	  <div class="span8 single-comment"><%= comment.content %></div>
-	  <div class="span4 timestamp">
+  <div class="row">
+	  <div class="col-md-8 single-comment"><%= comment.content %></div>
+	  <div class="col-md-4 timestamp">
 	    Posted by <span class="comment-creator"><%= comment.name %></span> <%= time_ago_in_words(comment.created_at) %> ago.
 	     <% if admin? %>
 	        <span class="delete"> 
