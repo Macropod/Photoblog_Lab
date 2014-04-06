@@ -32,6 +32,9 @@ class Post < ActiveRecord::Base
                     :path => "/:attachment/:access_token/:style.:extension",
                     :default_url => "/missing/:style/missing.jpg",
                     :convert_options => { :regular => "-unsharp 1.5x1+0.7+0.02" , :original => "-quality 55"}	# This will resharpen the image after the blurring that occurs due to the downsampling.
+  #validates_attachment_content_type :picture, :content_type => { :content_type => ["image/jpg", "image/jpeg", "image/png"] }
+  do_not_validate_attachment_file_type :picture
+  #validates_attachment_file_name :picture, :matches => [/jpg\Z/, /jpe?g\Z/]
 
   default_scope order: 'posts.created_at DESC'
   before_create :generate_access_token

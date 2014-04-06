@@ -42,6 +42,8 @@ class PostsController < ApplicationController
       flash[:success] = "Post created!"
       redirect_to root_url
     else
+      @title = "New post"
+      @galleries = Gallery.all
       render 'posts/new'
     end
   end
