@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.0.3'
+gem 'rails', '4.1'
 gem 'bootstrap-sass'
 gem 'bcrypt-ruby'
 gem 'will_paginate'
@@ -12,13 +12,15 @@ gem 'rails_12factor'  # for Heroku deployment
 
 group :development, :test do
   ruby "1.9.3"
-  # gem 'sqlite3', '1.3.5'
+  #ruby "2.1.0"
+  #gem 'sqlite3'#, '1.3.9'
   gem 'rspec-rails', '2.11.0'
   gem 'guard-rspec', '1.2.1'
   gem 'guard-spork', '1.2.0'
   gem 'spork', '0.9.2'
   gem 'wdm', '~> 0.0.3'
   gem 'annotate', '2.5.0'
+  gem 'tzinfo-data'
 end
 
 gem 'sass-rails', '~> 4.0.0'

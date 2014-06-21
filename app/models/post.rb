@@ -36,7 +36,8 @@ class Post < ActiveRecord::Base
   do_not_validate_attachment_file_type :picture
   #validates_attachment_file_name :picture, :matches => [/jpg\Z/, /jpe?g\Z/]
 
-  default_scope order: 'posts.created_at DESC'
+  #default_scope order: 'posts.created_at DESC'
+  default_scope -> { order('created_at DESC') }
   before_create :generate_access_token
 
   private
