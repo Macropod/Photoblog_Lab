@@ -16,12 +16,13 @@
 #  friends              :boolean          default(FALSE)
 #  others               :boolean          default(TRUE)
 #  gallery_id           :integer
+#  sort_index           :integer          default(0)
 #
 
 include ApplicationHelper
 
 class Post < ActiveRecord::Base
-  attr_accessible :text, :picture, :family, :friends, :others, :gallery_id
+  attr_accessible :text, :picture, :family, :friends, :others, :gallery_id, :sort_index
   belongs_to :user
   belongs_to :gallery
   has_many :comments, dependent: :destroy
@@ -37,7 +38,7 @@ class Post < ActiveRecord::Base
   #validates_attachment_file_name :picture, :matches => [/jpg\Z/, /jpe?g\Z/]
 
   #default_scope order: 'posts.created_at DESC'
-  default_scope -> { order('created_at DESC') }
+  default_scope -> { order('sort_index DESC, created_at DESC') }
   before_create :generate_access_token
 
   private

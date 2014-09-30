@@ -1,17 +1,19 @@
 <%= render 'shared/error_messages', object: f.object %>
 <div class="field">
-  <%= f.text_area :text, placeholder: "Compose new post..." %>
+  <%= f.text_area :text, placeholder: "Text|sort_index|group1|group2|group3" %>
 </div>
 <div class="picture_path">
-  <%= f.label :picture %>
-  <%= f.file_field :picture %>
+<!--   <%= f.label :picture %>
+  <%= f.file_field :picture %> -->
+  <%= f.label :pictures%>
+  <%= file_field_tag "images[]", type: :file, multiple: true %>
 </div>
-<div class="group-classification">
+<!-- <div class="group-classification">
 	<%= f.label :family %>
 	<%= f.check_box :family, :class => 'visible-check-box' %>
 	<%= f.label :friends %>
 	<%= f.check_box :friends %>
 	<%= f.label "Family 2" %>
 	<%= f.check_box :others %>
-</div>
+</div> -->
 <%= f.select(:gallery_id, @galleries.collect {|a| [a.name, a.id]}) %>

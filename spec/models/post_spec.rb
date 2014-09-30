@@ -16,6 +16,7 @@
 #  friends              :boolean          default(FALSE)
 #  others               :boolean          default(TRUE)
 #  gallery_id           :integer
+#  sort_index           :integer          default(0)
 #
 
 require 'spec_helper'
