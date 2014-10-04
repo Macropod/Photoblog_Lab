@@ -11,7 +11,7 @@ class PostsController < ApplicationController
   def index
     @title = "Posts Overview"
     # reorder gets rid of the default scope here and allows us to ignore the sort_index for the posts overview page, which makes it possible to reuse the same range of sort_indices for different galleries
-    @posts = Post.reorder('created_at DESC').paginate(page: params[:page], :per_page => 20)     
+    @posts = Post.reorder('gallery_id DESC, sort_index DESC').paginate(page: params[:page], :per_page => 20)     
     @galleries = galleries(current_user)
     if !params[:page].nil?
       @page = params[:page]
