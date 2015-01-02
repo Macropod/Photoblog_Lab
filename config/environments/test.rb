@@ -35,6 +35,10 @@ PhotoblogLab::Application.configure do
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
 
+  # Force all access to the app over SSL, use Strict-Transport-Security, 
+  # and use secure cookies.
+  config.force_ssl = true
+
   # Speed up tests by lowering BCrypt's cost function.
   require 'bcrypt'
   silence_warnings do

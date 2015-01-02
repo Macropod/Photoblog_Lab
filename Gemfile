@@ -1,6 +1,6 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
-gem 'rails', '4.1.5'
+gem 'rails', '4.2.0'
 gem 'bootstrap-sass'
 gem 'bcrypt-ruby'
 gem 'will_paginate'
@@ -11,7 +11,7 @@ gem 'protected_attributes'
 gem 'rails_12factor'  # for Heroku deployment
 
 group :development, :test do
-  ruby "1.9.3"
+  ruby "2.1.5"
   #ruby "2.1.0"
   #gem 'sqlite3'#, '1.3.9'
   gem 'rspec-rails', '2.11.0'
@@ -37,7 +37,8 @@ group :test do
   gem 'factory_girl_rails', '4.1.0'
 end 
 
-gem 'pg'
+#gem 'pg'
+gem 'pg', '0.18.0.pre20141117110243'
 
 group :production do
   #ruby "2.0.0"
