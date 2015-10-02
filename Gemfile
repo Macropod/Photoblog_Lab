@@ -1,12 +1,12 @@
-source 'http://rubygems.org'
+source 'https://rubygems.org'
 
-gem 'rails', '4.2.0'
+gem 'rails', '4.2.4'
 gem 'bootstrap-sass'
 gem 'bcrypt-ruby'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'paperclip'
-gem 'aws-sdk'
+gem 'aws-sdk', '< 2.0'
 gem 'protected_attributes'
 gem 'rails_12factor'  # for Heroku deployment
 
@@ -14,17 +14,18 @@ group :development, :test do
   ruby "2.1.5"
   #ruby "2.1.0"
   #gem 'sqlite3'#, '1.3.9'
-  gem 'rspec-rails', '2.11.0'
-  gem 'guard-rspec', '1.2.1'
-  gem 'guard-spork', '1.2.0'
-  gem 'spork', '0.9.2'
-  gem 'wdm', '~> 0.0.3'
-  gem 'annotate', '2.5.0'
+  gem 'rspec-rails'
+  gem 'guard-rspec'
+  gem 'guard-spork'
+  gem 'spork'
+  gem 'wdm'
+  gem 'annotate'
   gem 'tzinfo-data'
 end
 
 gem 'sass-rails', '~> 4.0.0'
-gem 'coffee-rails'
+gem 'coffee-rails', '~> 4.0.0'
+gem 'coffee-script-source', '1.8.0'
 gem 'uglifier'
 gem 'jquery-rails'
 
