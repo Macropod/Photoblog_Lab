@@ -54,7 +54,8 @@
               </ul>
             </li>
           <% end %>
-          <li><%= link_to "Recent Activity", comments_path %></li>
+          <li><%= link_to "Posts", posts_path %></li>
+          <li><%= link_to "Recent Comments", comments_path %></li>
           <li><%= link_to "Sign Out", signout_path, method: "delete" %></li>
         <% else %>
           <li><%= link_to "Sign In", signin_path %></li>

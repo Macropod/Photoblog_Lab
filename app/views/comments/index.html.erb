@@ -9,13 +9,14 @@
     <h1>Recently commented images</h1>
 		<% @comments.each do |comment| %>	
 			<ol class="posts">
+				<div class="comment_gallery">
+		        	<% if !comment.post.gallery.nil? %>
+		        		From gallery: <%= link_to comment.post.gallery.name, comment.post.gallery, :class=>"gallery-link"%> 
+		        	<% end %>
+	        	</div>
 		        <%= render comment.post %>
 		    </ol>
-<!-- 		        <div class="comment_gallery">
-	        	<% if !comment.post.gallery.nil? %>
-	        		From gallery: <%= link_to comment.post.gallery.name, comment.post.gallery, :class=>"gallery-link"%> 
-	        	<% end %>
-	        </div> -->
+ 		    
 	    <%end%>
 	    <%= will_paginate @comments %>
   </div>
