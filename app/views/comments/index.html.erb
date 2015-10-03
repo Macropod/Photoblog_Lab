@@ -1,30 +1,24 @@
-<div class="container">
-	<h1>All comments</h1>
-	<ol class="comments">
+<div class="row">
+  <div class="col-md-3">
+    <div class="well sidebar-nav gallery-sidebar">
+      <%= render 'shared/galleries' %>
+    </div>
+  </div>
+  
+  <div class="col-md-8">
+    <h1>Recently commented images</h1>
 		<% @comments.each do |comment| %>	
-			<li>
-		        <div class="comment_gallery">
-		        	<% if !comment.post.gallery.nil? %>
-		        		Gallery: <%= link_to comment.post.gallery.name, comment.post.gallery, :class=>"gallery-link"%> 
-		        	<% end %>
-		        </div>
-		        <div class="comment_post">
-		        	Post: <%= comment.post.text unless comment.post.gallery.nil? %>		        	
-		        </div>
-		        <div class="comment_content">
-		        	Content: <%= comment.content %>		        	
-		        </div>
-		        <div class="comment_content">
-		        	Name: <%= comment.name %>		        	
-		        </div>
-		        <% if admin? %>
-		            <span class="delete"> 
-		            <%= link_to "Delete", comment, method: :delete,
-		                          data: { confirm: "Are you sure?" },
-		                          title: comment.content %>
-		            </span>
-		        <% end %>
-		    </li>
+			<ol class="posts">
+		        <%= render comment.post %>
+		    </ol>
+<!-- 		        <div class="comment_gallery">
+	        	<% if !comment.post.gallery.nil? %>
+	        		From gallery: <%= link_to comment.post.gallery.name, comment.post.gallery, :class=>"gallery-link"%> 
+	        	<% end %>
+	        </div> -->
 	    <%end%>
-	</ol>
+	    <%= will_paginate @comments %>
+  </div>
+  <div class="col-md-1">
+  </div>
 </div>

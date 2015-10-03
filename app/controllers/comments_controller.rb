@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_filter :signed_in_user
-  before_filter :admin_user, only: [:destroy, :index]
+  before_filter :admin_user, only: [:destroy]
 
   def create
   	@post = Post.find(params[:post_id])
@@ -22,7 +22,8 @@ class CommentsController < ApplicationController
     #render :inline => "<%= debug(params) if Rails.env.development? %>"
     if @comment.save
       flash[:success] = "Comment created!"
-      render "galleries/show"
+      # render "galleries/show"
+      redirect_back_or(root_path)
     else
       flash[:error] = "Comment could not be created. Did you forget your name?"
       render "galleries/show"
@@ -42,7 +43,30 @@ class CommentsController < ApplicationController
   end
 
   def index
-    @comments = Comment.all
-    @post 
+    if not(params.has_key?(:page))
+      page = nil
+      @page = 0
+    elsif params[:page] == "0" 
+      page = nil
+      @page = 0
+    else
+      page = params[:page]
+      @page = page
+    end
+    comments_non_unique = Comment.select("DISTINCT(post_id), *").order("post_id").order("created_at DESC")
+
+    store_location
+
+    @comments ||= Array.new
+    post_ids ||= Array.new
+    comments_non_unique.each do |comment|
+      if post_ids.include? comment.post_id
+      else
+        @comments.push(comment)
+        post_ids.push(comment.post_id)
+      end
+    end
+    @comments = @comments.paginate(page: params[:page], :per_page => 5)
+    @galleries = galleries(current_user)
   end
 end
