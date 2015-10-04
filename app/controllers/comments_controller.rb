@@ -66,7 +66,7 @@ class CommentsController < ApplicationController
         post_ids.push(comment.post_id)
       end
     end
-    @comments = @comments.paginate(page: params[:page], :per_page => 5)
+    @comments = @comments.paginate(page: params[:page], :per_page => 20)
     @galleries = galleries(current_user)
   end
 end
