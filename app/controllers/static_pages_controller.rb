@@ -3,19 +3,15 @@ class StaticPagesController < ApplicationController
     @title = "Home"
   end
 
-  def DSF
-    @title = "Application Data Science Fellowship - Alexander Büse"
+  def help
+  	@title = "Help"
   end
 
-  # def help
-  # 	@title = "Help"
-  # end
+  def about
+  	@title = "About"
+  end
 
-  # def about
-  # 	@title = "About"
-  # end
-
-  # def contact
-  # 	@title = "Contact"
-  # end
+  def contact
+   	@title = "Contact"
+  end
 end
