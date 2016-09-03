@@ -1,17 +1,21 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.5.1'
+#gem 'rails', '4.2.5.1'
+gem 'rails', '4.2.7.1'
 gem 'bootstrap-sass'
 gem 'bcrypt-ruby'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'paperclip'
-gem 'aws-sdk', '< 2.0'
+#gem 'paperclip', :git=> 'https://github.com/thoughtbot/paperclip', :ref => '523bd46c768226893f23889079a7aa9c73b57d68'
+#gem 'aws-sdk', '< 2.0'
+gem 'aws-sdk'
 gem 'protected_attributes'
 gem 'rails_12factor'  # for Heroku deployment
 
 group :development, :test do
-  ruby "2.1.5"
+  #ruby "2.1.5"
+  ruby "2.2.5"
   #ruby "2.1.0"
   #gem 'sqlite3'#, '1.3.9'
   gem 'rspec-rails'
@@ -38,8 +42,8 @@ group :test do
   gem 'factory_girl_rails', '4.1.0'
 end 
 
-#gem 'pg'
-gem 'pg', '0.18.0.pre20141117110243'
+gem 'pg'
+#gem 'pg', '0.18.0.pre20141117110243'
 
 group :production do
   #ruby "2.0.0"
