@@ -24,7 +24,8 @@ class GalleriesController < ApplicationController
   end
 
   def create
-    @gallery = Gallery.new(params[:gallery])
+    #@gallery = Gallery.new(params[:gallery])
+    @gallery = Gallery.new(gallery_params)
     if @gallery.save
       flash[:success] = "Gallery created!"
       redirect_to root_url
@@ -59,6 +60,12 @@ class GalleriesController < ApplicationController
       flash[:success] = "Gallery deleted!"
       redirect_to root_url
     end
+  end
+
+  private
+
+  def gallery_params
+    params.require(:gallery).permit(:name, :start_date, :end_date)
   end
 
 end

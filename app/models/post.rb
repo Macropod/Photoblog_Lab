@@ -22,7 +22,7 @@
 include ApplicationHelper
 
 class Post < ActiveRecord::Base
-  attr_accessible :text, :picture, :family, :friends, :others, :gallery_id, :sort_index
+  #attr_accessible :text, :picture, :family, :friends, :others, :gallery_id, :sort_index
   belongs_to :user
   belongs_to :gallery
   has_many :comments, dependent: :destroy

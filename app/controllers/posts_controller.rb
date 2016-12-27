@@ -81,4 +81,10 @@ class PostsController < ApplicationController
 	  	redirect_to root_url
 	  end
   end
+
+  private
+
+  def post_params
+    params.require(:post).permit(:text, :picture, :family, :friends, :others, :gallery_id, :sort_index)
+  end
 end

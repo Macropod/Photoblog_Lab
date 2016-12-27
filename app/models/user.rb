@@ -16,7 +16,7 @@
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :name, :password, :password_confirmation, :family, :friends, :others
+  #attr_accessible :name, :password, :password_confirmation, :family, :friends, :others
   has_secure_password
   has_many :posts, dependent: :destroy
 

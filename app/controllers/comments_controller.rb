@@ -4,7 +4,8 @@ class CommentsController < ApplicationController
 
   def create
   	@post = Post.find(params[:post_id])
-    @comment = @post.comments.build(params[:comment])
+    #@comment = @post.comments.build(params[:comment])
+    @comment = @post.comments.build(comment_params)
     if params[:page] == "0"
       page = nil
       @page = 0
@@ -68,5 +69,11 @@ class CommentsController < ApplicationController
     end
     @comments = @comments.paginate(page: params[:page], :per_page => 20)
     @galleries = galleries(current_user)
+  end
+
+  private
+
+  def comment_params
+    params.require(:comment).permit(:content, :name)
   end
 end

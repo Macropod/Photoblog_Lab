@@ -11,7 +11,8 @@ class UsersController < ApplicationController
   end
 
   def create
-  	 @user = User.new(params[:user])
+  	#@user = User.new(params[:user])
+    @user = User.new(user_params)
     if @user.save
       #sign_in @user
       flash[:success] = "Welcome to the PhotoBlog!"
@@ -68,5 +69,10 @@ class UsersController < ApplicationController
     def not_signed_in
       redirect_to(root_path) unless !current_user
     end
+
+    def user_params
+      params.require(:user).permit(:name, :password, :password_confirmation, :family, :friends, :others)
+    end
+
 
 end
