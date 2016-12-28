@@ -19,37 +19,7 @@ class PostsController < ApplicationController
       @page = 0
     end
 
-    #@galleries = galleries(current_user)
-    #temp_galleries = Gallery.all
-    temp_galleries = galleries(current_user)
-    current_year = nil
-    single_year_galleries = Array.new
-    grouped_galleries = Array.new
-    temp_galleries.each do |gallery|
-      if(!gallery.start_date.nil?)
-        if gallery.start_date.year == current_year
-          #puts "\t" + gallery.name
-          single_year_galleries.push gallery
-        else
-          # save previous years selection of galleries
-          current_year = gallery.start_date.year
-          grouped_galleries.push single_year_galleries
-          #puts single_year_galleries
-          #puts single_year_galleries.size
-
-          # start new selection
-          single_year_galleries = Array.new
-          #puts gallery.start_date.year
-          #puts "\t" + gallery.name
-          single_year_galleries.push gallery
-          
-        end
-        
-      end
-    end
-    grouped_galleries.push single_year_galleries
-    puts grouped_galleries
-    @galleries = grouped_galleries
+    @galleries = galleries_grouped(galleries(current_user))
   end
 
 

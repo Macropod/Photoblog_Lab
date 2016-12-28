@@ -16,4 +16,27 @@ module GalleriesHelper
       	  return Array.new
 	    end
 	end
+
+	def galleries_grouped(galleries)
+		current_year = nil
+	    single_year_galleries = Array.new
+	    grouped_galleries = Array.new
+	    galleries.each do |gallery|
+	      if(!gallery.start_date.nil?)
+	        if gallery.start_date.year == current_year
+	          single_year_galleries.push gallery
+	        else
+	          # save previous years selection of galleries
+	          current_year = gallery.start_date.year
+	          grouped_galleries.push single_year_galleries
+
+	          # start new selection
+	          single_year_galleries = Array.new
+	          single_year_galleries.push gallery
+	        end
+	      end
+	    end
+	    grouped_galleries.push single_year_galleries
+	    return grouped_galleries
+	end
 end

@@ -18,7 +18,7 @@ class CommentsController < ApplicationController
     else
       @posts = Post.where(:gallery_id => params[:gallery_id]).paginate(page: page)
     end
-    @galleries = galleries(current_user)
+    @galleries = galleries_grouped(galleries(current_user))
     @gallery_id = params[:gallery_id]
     #render :inline => "<%= debug(params) if Rails.env.development? %>"
     if @comment.save
@@ -68,7 +68,7 @@ class CommentsController < ApplicationController
       end
     end
     @comments = @comments.paginate(page: params[:page], :per_page => 20)
-    @galleries = galleries(current_user)
+    @galleries = galleries_grouped(galleries(current_user))
   end
 
   private

@@ -3,65 +3,40 @@
     <ul class="noindent">
     <% @galleries.each_with_index do |catyear, index| %>    
       <li>
-
-
-
         <% if !catyear[0].nil? %>
-
-
-        <input type="checkbox" id=<%="expand_comments_#{catyear[0].start_date.year}"%> class="invisible-check-box" role="button">
+          <% if index==1 %>
+            <input type="checkbox" checked id=<%="expand_comments_#{catyear[0].start_date.year}"%> class="invisible-check-box" >
+          <% else %>
+            <input type="checkbox" id=<%="expand_comments_#{catyear[0].start_date.year}"%> class="invisible-check-box">
+          <% end %>
         <label for=<%="expand_comments_#{catyear[0].start_date.year}"%> onclick=""><span><%= "#{catyear[0].start_date.year}" %></span><span><%= "#{catyear[0].start_date.year}" %></span></label> 
         <div id=<%="comment-section_#{catyear[0].start_date.year}"%>>
           <div class="comment-inner">
-            Hello World!
-           
-          </div>
-        </div>
-
-          
-
-          <% catyear.each do |gal| %>
-            <li>
-              <div class="row">
-                <span class="col-md-6">
-                  <% if @gallery_id.to_i == gal.id.to_i %>
-                    <span class="bold"><%= link_to gal.name, gal, :class=>"gallery-link" %></span>
-                  <% else %>
-                    <%= link_to gal.name, gal, :class=>"gallery-link" %>
-                  <% end %>
-                </span>
+            <ul class="noindent">
+            <% catyear.each do |gal| %>
+              <li>
+                <div class="row">
+                  <span class="col-md-6">
+                    <% if @gallery_id.to_i == gal.id.to_i %>
+                      <span class="bold"><%= link_to gal.name, gal, :class=>"gallery-link" %></span>
+                    <% else %>
+                      <%= link_to gal.name, gal, :class=>"gallery-link" %>
+                    <% end %>
+                  </span>
                 <span class="col-md-6 time-interval">
                     <%= date_interval(gal.start_date,gal.end_date) %>
                 </span>
               </div>
-            </li>
+             </li>
             <% if admin? %>
             | <%= link_to "delete", gal, method: :delete, data: { confirm: "You sure?" } %> | <%= link_to "update", edit_gallery_path(gal.id) %>
             <% end %>
             <br>
-          <% end %>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+           <% end %>
+           </ul>
+          </div>
+        </div>
         <% end %>
-
-
-
-
-
-
-
       </li>
     <% end %>
     </ul>
