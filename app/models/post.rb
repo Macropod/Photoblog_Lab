@@ -27,7 +27,7 @@ class Post < ActiveRecord::Base
   belongs_to :gallery
   has_many :comments, dependent: :destroy
   validates :user_id, presence: true
-  validates :text, presence: true, length: { maximum: 140 }
+  validates :text, presence: true, length: { maximum: 255 }
   has_attached_file :picture,
                     :styles => { :regular => "800x800>", :medium => "300x300>", :thumb => "100x100>" },
                     :path => "/:attachment/:access_token/:style.:extension",
