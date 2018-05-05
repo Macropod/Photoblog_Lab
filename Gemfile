@@ -47,7 +47,7 @@ group :test do
   gem 'factory_girl_rails'
 end 
 
-gem 'pg'
+gem 'pg', '~> 0.20'
 #gem 'pg', '0.18.0.pre20141117110243'
 
 group :production do
