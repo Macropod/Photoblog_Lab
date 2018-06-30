@@ -15,10 +15,10 @@
     <label for=<%="expand_comments_#{post.id}"%> onclick=""><span>Comments (<%= post.comments.count %>)</span><span>Hide comments!</span></label> 
     <div id=<%="comment-section_#{post.id}"%>>
       <div class="comment-inner">
-        <ol class="comments">
-          <%= render post.comments %>
+        <ol class="comments" id="append_comments">
+          <%= render partial: post.comments %>
         </ol>
-        <%= form_for([post, post.comments.build]) do |f| %>
+        <%= form_for([post, post.comments.build], :remote => true) do |f| %>
         <div class="row">
           <%= render 'shared/error_messages', object: f.object %>
           <div class="col-md-8">

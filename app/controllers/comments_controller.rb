@@ -1,10 +1,13 @@
 class CommentsController < ApplicationController
+  respond_to :html, :js
   before_filter :signed_in_user
   before_filter :admin_user, only: [:destroy]
 
+
+
+  #def create
   def create
   	@post = Post.find(params[:post_id])
-    #@comment = @post.comments.build(params[:comment])
     @comment = @post.comments.build(comment_params)
     if params[:page] == "0"
       page = nil
@@ -23,8 +26,10 @@ class CommentsController < ApplicationController
     #render :inline => "<%= debug(params) if Rails.env.development? %>"
     if @comment.save
       flash[:success] = "Comment created!"
-      # render "galleries/show"
-      redirect_back_or(root_path)
+      respond_to do |format|
+        format.html { redirect_back_or(root_path) }
+        format.js 
+      end
     else
       flash[:error] = "Comment could not be created. Did you forget your name?"
       render "galleries/show"

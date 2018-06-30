@@ -37,6 +37,9 @@ gem 'coffee-script-source', '1.8.0'
 gem 'uglifier'
 gem 'jquery-rails'
 
+
+gem 'responders'
+
 # Test gems on Windows
 group :test do
   gem 'capybara', '1.1.2'
